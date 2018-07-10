@@ -1,6 +1,7 @@
 console.log("funciona!");
 let findImg = image_urls => {
 	const target = document.getElementById("imgs");
+	var img = null;
 	for (const image_url of image_urls) {
 
 		var img = new Image();

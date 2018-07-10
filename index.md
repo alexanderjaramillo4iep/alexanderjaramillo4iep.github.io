@@ -11,9 +11,15 @@ Los links de referencia de la consulta van repartidos así:
 2. https://css-tricks.com/snippets/css/complete-guide-grid/
 3. https://es.stackoverflow.com/questions/137854/establecer-alto-con-grid-colum
 
-## Adrian Arboleda
+### Adrian Arboleda
 
 1. https://comeon.community/jugando-con-css-grid-8bf8708c891f
+
+### Ana María Ruiz
+
+1. https://lenguajecss.com/p/css/propiedades/grid-css
+2. https://www.w3.org/TR/css-grid-1/
+
 
 ```markdown
 Recuerda separar tus referencias antes que se acaben!
