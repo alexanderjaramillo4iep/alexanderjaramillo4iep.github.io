@@ -14,3 +14,7 @@ Los links de referencia de la consulta van repartidos así:
 ```markdown
 Recuerda separar tus referencias antes que se acaben!
 ```
+
+## 10-1
+
+El miércoles 11 de Julio de 2018 no tenemos clase
