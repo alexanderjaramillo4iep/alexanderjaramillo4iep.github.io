@@ -1,37 +1,16 @@
-## Welcome to GitHub Pages
+# Noticias
 
-You can use the [editor on GitHub](https://github.com/alexanderjaramillo4iep/alexanderjaramillo4iep.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## 11-1
 
-### Markdown
+Los links de referencia de la consulta van repartidos así:
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Nallely Velásquez
+
+1. https://www.beeva.com/beeva-view/desarrollo/ya-esta-aqui-css-grid-layout-y-ahora-que-parte1/
+2. https://css-tricks.com/snippets/css/complete-guide-grid/
+3. https://es.stackoverflow.com/questions/137854/establecer-alto-con-grid-colum
 
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+Recuerda separar tus referencias antes que se acaben!
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/alexanderjaramillo4iep/alexanderjaramillo4iep.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
