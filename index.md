@@ -63,8 +63,15 @@ Los links de referencia de la consulta van repartidos así:
 1. https://www.oscarlijo.com/blog/css-grid-layout/
 2. https://www.merixstudio.com/blog/benefits-css-grid-layout/
 
+### Geraldine Herrera
 
+1. https://css-tricks.com/things-ive-learned-css-grid-layout/
+2. https://www.smashingmagazine.com/2017/06/building-production-ready-css-grid-layout/
 
+### Maria Clara Gutierrez
+
+1. https://ed.team/blog/edgrid-ahora-usa-css-grid
+2. https://www.youtube.com/watch?v=WulwY9v5Aw0
 
 ```markdown
 Recuerda separar tus referencias antes que se acaben!
