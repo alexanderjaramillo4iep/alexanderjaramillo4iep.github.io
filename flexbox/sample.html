@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.contenedor {
+			background-color: blueviolet;
+		}
+		.contenedor.flex {
+			display: flex;
+		}
+		.contenedor.grid {
+			display: grid;
+			grid: 	'menu cabecera cabecera'
+					'menu contenido contenido'
+					'menu piedepag piedepag';
+		}
+		.item {
+			background-color: coral;
+		}
+		.elem-1 { grid-area: cabecera;}
+		.elem-2 { grid-area: contenido;}
+		.elem-3 { grid-area: piedepag;}
+		.elem-4 { grid-area: menu;}
+		.elem-5 { grid-area: galeria;}
+		.elem-6 { grid-area: pie2;}
+	</style>
+</head>
+<body>
+	<div class="contenedor flex">
+		<div class="item elem-1">elemento 1</div>
+		<div class="item elem-2">elemento 2</div>
+		<div class="item elem-3">elemento 3</div>
+		<div class="item elem-4">elemento 4</div>
+		<div class="item elem-5">elemento 5</div>
+		<div class="item elem-6">elemento 6</div>
+		<div class="item elem-7">elemento 7</div>
+		<div class="item elem-8">elemento 8</div>
+		<div class="item elem-9">elemento 9</div>
+	</div>
+	<div class="contenedor grid">
+		<div class="item elem-1">elemento 1</div>
+		<div class="item elem-2">elemento 2</div>
+		<div class="item elem-3">elemento 3</div>
+		<div class="item elem-4">elemento 4</div>
+		<div class="item elem-5">elemento 5</div>
+		<div class="item elem-6">elemento 6</div>
+		<div class="item elem-7">elemento 7</div>
+		<div class="item elem-8">elemento 8</div>
+		<div class="item elem-9">elemento 9</div>
+	</div>
+</body>
+</html>
