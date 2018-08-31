@@ -18,11 +18,14 @@
         });
     return result;
 }
-const access_token = findGetParameter('access_token');
-console.log(access_token);
+const code = findGetParameter('code');
+console.log(code, sec);
     </script>
 </head>
 <body>
     hola mundo
+    https://api.instagram.com/oauth/authorize/?client_id=d183642bd0dc4e9fb9f40d2aece6d7fa&redirect_uri=https://alexanderjaramillo4iep.github.io/index3.html&response_type=code
+
+    https://api.instagram.com/oauth/access_token/?client_id=d183642bd0dc4e9fb9f40d2aece6d7fa&client_secret=18f7ba090ad64c38942d7186f00939dc&grant_type=authorization_code&redirect_uri=https://alexanderjaramillo4iep.github.io/index3.html&code=<script>document.write(code)</script>
 </body>
 </html>
