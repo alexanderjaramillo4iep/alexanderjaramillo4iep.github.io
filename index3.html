@@ -28,10 +28,17 @@
                     console.log(this.responseText);
                     var res = JSON.parse(this.responseText);
                     callback(res);
+                } else {
+                    console.error()
                 }
             };
             xhttp.open("POST", url, true);
-            xhttp.send(data);
+            try {
+                xmlhttp.send(data);
+            } catch(err) {
+                console.error(err);
+                document.getElementById("demo").innerHTML += "\nXMLHttprequest error: " + err.description; // This prints "XMLHttprequest error: undefined" in the body.
+            }
         }
 
         function get(url, callback) {
@@ -45,7 +52,12 @@
                 }
             };
             xhttp.open("GET", url, true);
-            xhttp.send();
+            try {
+                xmlhttp.send();
+            } catch(err) {
+                console.error(err);
+                document.getElementById("demo").innerHTML += "\nXMLHttprequest error: " + err.description; // This prints "XMLHttprequest error: undefined" in the body.
+            }
         }
 
         const code = findGetParameter('code');
