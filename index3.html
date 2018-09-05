@@ -34,6 +34,8 @@
             if (this.readyState == 4 && this.status == 200) {
                 console.log(this.responseText);
                 document.getElementById("demo").innerHTML = this.responseText;
+                console.log(this.responseText.access_token);
+                
             }
         };
         xhttp.open("POST", "https://api.instagram.com/oauth/access_token/", true);
