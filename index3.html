@@ -22,8 +22,8 @@
 
         function post(data, url, callback) {
 
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     console.log(this.responseText);
                     var res = JSON.parse(this.responseText);
@@ -32,7 +32,7 @@
                     console.error()
                 }
             };
-            xhttp.open("POST", url, true);
+            xmlhttp.open("POST", url, true);
             try {
                 xmlhttp.send(data);
             } catch(err) {
@@ -43,15 +43,15 @@
 
         function get(url, callback) {
 
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     console.log(this.responseText);
                     var res = JSON.parse(this.responseText);
                     callback(res);
                 }
             };
-            xhttp.open("GET", url, true);
+            xmlhttp.open("GET", url, true);
             try {
                 xmlhttp.send();
             } catch(err) {
