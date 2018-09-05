@@ -6,82 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script>
-        function findGetParameter(parameterName) {
-            var result = null,
-                tmp = [];
-            location.search
-                .substr(1)
-                .split("&")
-                .forEach(function (item) {
-                    tmp = item.split("=");
-                    if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
-                });
-            return result;
-        }
-
-        function post(data, url, callback) {
-
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText);
-                    var res = JSON.parse(this.responseText);
-                    callback(res);
-                } else {
-                    console.error()
-                }
-            };
-            xmlhttp.open("POST", url, true);
-            try {
-                xmlhttp.send(data);
-            } catch(err) {
-                console.log(err);
-                document.getElementById("demo").innerHTML = "\nXMLHttprequest error: " + err.description;
-            }
-        }
-
-        function get(url, callback) {
-
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText);
-                    var res = JSON.parse(this.responseText);
-                    callback(res);
-                }
-            };
-            xmlhttp.open("GET", url, true);
-            try {
-                xmlhttp.send();
-            } catch(err) {
-                console.log(err);
-                document.getElementById("demo").innerHTML = "\nXMLHttprequest error: " + err.description; // This prints "XMLHttprequest error: undefined" in the body.
-            }
-        }
-
-        const code = findGetParameter('code');
-        console.log(code);
-
-        var data = new FormData();
-        data.append('client_id', 'd183642bd0dc4e9fb9f40d2aece6d7fa');
-        data.append('client_secret', '18f7ba090ad64c38942d7186f00939dc');
-        data.append('grant_type', 'authorization_code');
-        data.append('redirect_uri', 'https://alexanderjaramillo4iep.github.io/index3.html');
-        data.append('code', code);
-
-        post(data, "https://api.instagram.com/oauth/access_token/", (res) => {
-            console.log(res.access_token);
-            document.getElementById("demo").innerHTML = res;
-            alert('ya nos logueamos')
-            get(`https://api.instagram.com/v1/tags/nofilter/media/recent?access_token=${res.access_token}`, (res2) => {
-                console.log(res2);
-                document.getElementById("demo").innerHTML = JSON.stringify(res2);
-            });
-
-        });
-
-    </script>
 </head>
 
 <body>
@@ -92,6 +16,83 @@
         https://api.instagram.com/oauth/access_token/?client_id=d183642bd0dc4e9fb9f40d2aece6d7fa&client_secret=18f7ba090ad64c38942d7186f00939dc&grant_type=authorization_code&redirect_uri=https://alexanderjaramillo4iep.github.io/index3.html&code=
     </div>
     <script>document.write(code)</script>
+
+    <script>
+            function findGetParameter(parameterName) {
+                var result = null,
+                    tmp = [];
+                location.search
+                    .substr(1)
+                    .split("&")
+                    .forEach(function (item) {
+                        tmp = item.split("=");
+                        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+                    });
+                return result;
+            }
+    
+            function post(data, url, callback) {
+    
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log(this.responseText);
+                        var res = JSON.parse(this.responseText);
+                        callback(res);
+                    } else {
+                        console.error()
+                    }
+                };
+                xmlhttp.open("POST", url, true);
+                try {
+                    xmlhttp.send(data);
+                } catch(err) {
+                    console.log(err);
+                    document.getElementById("demo").innerHTML = "\nXMLHttprequest error: " + err.description;
+                }
+            }
+    
+            function get(url, callback) {
+    
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log(this.responseText);
+                        var res = JSON.parse(this.responseText);
+                        callback(res);
+                    }
+                };
+                xmlhttp.open("GET", url, true);
+                try {
+                    xmlhttp.send();
+                } catch(err) {
+                    console.log(err);
+                    document.getElementById("demo").innerHTML = "\nXMLHttprequest error: " + err.description; // This prints "XMLHttprequest error: undefined" in the body.
+                }
+            }
+    
+            const code = findGetParameter('code');
+            console.log(code);
+    
+            var data = new FormData();
+            data.append('client_id', 'd183642bd0dc4e9fb9f40d2aece6d7fa');
+            data.append('client_secret', '18f7ba090ad64c38942d7186f00939dc');
+            data.append('grant_type', 'authorization_code');
+            data.append('redirect_uri', 'https://alexanderjaramillo4iep.github.io/index3.html');
+            data.append('code', code);
+    
+            post(data, "https://api.instagram.com/oauth/access_token/", (res) => {
+                console.log(res.access_token);
+                document.getElementById("demo").innerHTML = res;
+                alert('ya nos logueamos')
+                get(`https://api.instagram.com/v1/tags/nofilter/media/recent?access_token=${res.access_token}`, (res2) => {
+                    console.log(res2);
+                    document.getElementById("demo").innerHTML = JSON.stringify(res2);
+                });
+    
+            });
+    
+        </script>
 </body>
 
 </html>
