@@ -36,8 +36,8 @@
             try {
                 xmlhttp.send(data);
             } catch(err) {
-                console.error(err);
-                document.getElementById("demo").innerHTML += "\nXMLHttprequest error: " + err.description; // This prints "XMLHttprequest error: undefined" in the body.
+                console.log(err);
+                document.getElementById("demo").innerHTML = "\nXMLHttprequest error: " + err.description;
             }
         }
 
@@ -55,8 +55,8 @@
             try {
                 xmlhttp.send();
             } catch(err) {
-                console.error(err);
-                document.getElementById("demo").innerHTML += "\nXMLHttprequest error: " + err.description; // This prints "XMLHttprequest error: undefined" in the body.
+                console.log(err);
+                document.getElementById("demo").innerHTML = "\nXMLHttprequest error: " + err.description; // This prints "XMLHttprequest error: undefined" in the body.
             }
         }
 
