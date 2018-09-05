@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script>
         function findGetParameter(parameterName) {
             var result = null,
@@ -22,28 +21,33 @@
         }
         const code = findGetParameter('code');
         console.log(code);
-        $.ajax({
-            method: "POST",
-            url: "https://api.instagram.com/oauth/access_token/",
-            data: {
-                client_id: "d183642bd0dc4e9fb9f40d2aece6d7fa",
-                client_secret: "18f7ba090ad64c38942d7186f00939dc",
-                grant_type: "authorization_code",
-                redirect_uri: 'la url de su página web va acá',
-                code
+
+        var data = new FormData();
+        data.append('client_id', 'd183642bd0dc4e9fb9f40d2aece6d7fa');
+        data.append('client_secret', '18f7ba090ad64c38942d7186f00939dc');
+        data.append('grant_type', 'authorization_code');
+        data.append('redirect_uri', 'aquí va la url del proyecto');
+        data.append('code', code);
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(data);
+                document.getElementById("demo").innerHTML = this.responseText;
             }
-        }).done(function(data) {
-            // $( this ).addClass( "done" );
-            console.log(data);
-        });
+        };
+        xhttp.open("POST", "https://api.instagram.com/oauth/access_token/", true);
+        xhttp.send(data);
     </script>
 </head>
 
 <body>
-    get
-    https://api.instagram.com/oauth/authorize/?client_id=d183642bd0dc4e9fb9f40d2aece6d7fa&redirect_uri=https://alexanderjaramillo4iep.github.io/index3.html&response_type=code
-    post
-    https://api.instagram.com/oauth/access_token/?client_id=d183642bd0dc4e9fb9f40d2aece6d7fa&client_secret=18f7ba090ad64c38942d7186f00939dc&grant_type=authorization_code&redirect_uri=https://alexanderjaramillo4iep.github.io/index3.html&code=
+    <div id="demo">
+        get
+        https://api.instagram.com/oauth/authorize/?client_id=d183642bd0dc4e9fb9f40d2aece6d7fa&redirect_uri=https://alexanderjaramillo4iep.github.io/index3.html&response_type=code
+        post
+        https://api.instagram.com/oauth/access_token/?client_id=d183642bd0dc4e9fb9f40d2aece6d7fa&client_secret=18f7ba090ad64c38942d7186f00939dc&grant_type=authorization_code&redirect_uri=https://alexanderjaramillo4iep.github.io/index3.html&code=
+    </div>
     <script>document.write(code)</script>
 </body>
 
