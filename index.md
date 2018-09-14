@@ -125,4 +125,4 @@ Recuerda separar tus referencias antes que se acaben!
 
 ## 10-1
 
-NO HAY NOTICIAS RECIENTES
+El viernes tenemos clase normal de media técnica
