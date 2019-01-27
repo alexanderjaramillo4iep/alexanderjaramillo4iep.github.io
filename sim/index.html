@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simulación</title>
+  </head>
+
+  <body>
+    <h1>Simulación Binaria</h1>
+    <br>Porcentaje<input type="number" id="porcentaje">
+    <button onclick="simulate()">Simular</button>
+
+
+    <h2>Resultados</h2>
+    <br>total ganado promedio<input type="text" id="result">
+    <br>total minutos promedio<input type="text" id="min">
+    <br>promedio ganancia por minuto<input type="text" id="prom">
+    <script>
+      const sim = () => {
+        const gana = () => {
+          i--;
+          log(['GANA']);
+          invertir = Math.floor(invertido_ciclo / porcentaje);
+          invertido = invertir + 1;
+          invertido_ciclo += invertido;
+          total_invertido += invertido;
+          total_ganado += (invertido * porcentaje);
+          ganamos = true;
+          log();
+          invertido = 1;
+          invertido_ciclo = 0;
+
+        };
+        const pierde = () => {
+          log(['pierde']);
+          invertir = Math.floor(invertido_ciclo / porcentaje);
+          invertido = invertir + 1;
+          invertido_ciclo += invertido;
+          total_invertido += invertido;
+          ganamos = false;
+          log();
+        };
+
+        const log = (arr = null) => {
+          if (arr) {/*
+            document.write(arr.join('<br>'));
+            document.write('<br>');*/
+            return;
+          }
+          const result = [];
+          const totales = [
+            'total ganado: ' + Math.round(total_ganado * 10) / 10,
+            'total invertido: ' + Math.round(total_invertido * 10) / 10
+          ];
+          result.push(totales.join(' | '));
+          const detalle = [
+            'invertido real: ' + Math.round(invertido * 10) / 10,
+            ganamos ?
+              'resultado esperado: ' + (invertido * (1 + porcentaje)) :
+              'perdido: ' + Math.round(invertido_ciclo * 10) / 10
+          ];
+          result.push(detalle.join(' | '));
+          if (ganamos)
+            result.push('ganancia neta: ' + Math.round(((invertido * (1 + porcentaje)) - invertido) * 10) / 10);
+          log(result);
+          return totales;
+        }
+
+        var porcentaje = parseFloat(document.getElementById('porcentaje').value);
+        // var porcentaje = 0.8;
+        var aleatorio = 0, i = 5, baja = false;
+        var invertido = 1, invertir = 0;
+        var [total_ganado, total_invertido, invertido_ciclo] = [0, 0, 0];
+        var iteraciones = 0;
+        var ganamos = true;
+
+        while (i > 0 && iteraciones < 20) {
+          iteraciones++;
+          baja = !baja;
+          aleatorio = Math.random();
+
+
+          if (aleatorio < 0.5) {
+
+            log(['<br>sube, ']);
+            if (baja) pierde();
+            else gana();
+
+          } else {
+
+            log(['<br>baja, ']);
+            if (!baja) pierde();
+            else gana();
+
+          }
+        }
+        log(['<br><br>iteraciones simuladas', iteraciones]);
+        const results = log();
+        return results.map(result => result.split(': '))
+      }
+
+      const simulate = () => {
+
+        console.clear();
+        var simulations = 20;
+        var data = [];
+        var dataSim = null;
+        while (simulations > 0) {
+          simulations--;
+
+          dataSim = sim().reduce((acc, dato, i) => {
+            acc[dato[0]] = parseFloat(dato[1]);
+            if (!acc.hasOwnProperty('arr')) {
+              acc['arr'] = [];
+            }
+            acc['arr'].push(dato[0]);
+            return acc;
+          }, {});
+
+          data.push(dataSim);
+          console.log(dataSim);
+        }
+        var promedios = data.reduce((acc, total, i) => {
+          acc.ganado += total[total.arr[0]];
+          acc.minutos += total[total.arr[1]];
+          acc.cantidad++;
+          return acc;
+        }, { ganado: 0, minutos: 0, cantidad: 0 });
+        console.log(promedios);
+        document.getElementById('result').value = promedios.ganado / promedios.cantidad;
+        document.getElementById('min').value = promedios.minutos / promedios.cantidad;
+        document.getElementById('prom').value = promedios.ganado / promedios.minutos;
+        if ((promedios.ganado / promedios.minutos) < 0.4) {
+          alert('revisar');
+        }
+      }
+
+    </script>
+  </body>
+
+</html>
