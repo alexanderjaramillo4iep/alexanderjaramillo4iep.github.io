@@ -53,7 +53,8 @@
           const result = [];
           const totales = [
             'total ganado: ' + Math.round(total_ganado * 10) / 10,
-            'total invertido: ' + Math.round(total_invertido * 10) / 10
+            'total invertido: ' + Math.round(total_invertido * 10) / 10,
+            'total iteraciones: ' + iteraciones
           ];
           result.push(totales.join(' | '));
           const detalle = [
@@ -66,6 +67,10 @@
           if (ganamos)
             result.push('ganancia neta: ' + Math.round(((invertido * (1 + porcentaje)) - invertido) * 10) / 10);
           log(result);
+          var detalle1 = JSON.stringify(detalle.map(det => det.split(': ')));
+          console.log(detalle1);
+
+          // totales.push('detalle: ' + detalle1);
           return totales;
         }
 
@@ -125,15 +130,20 @@
         }
         var promedios = data.reduce((acc, total, i) => {
           acc.ganado += total[total.arr[0]];
-          acc.minutos += total[total.arr[1]];
+          acc.invertido += total[total.arr[1]];
+          acc.minutos += total[total.arr[2]];
           acc.cantidad++;
           return acc;
-        }, { ganado: 0, minutos: 0, cantidad: 0 });
+        }, { ganado: 0, invertido: 0, minutos: 0, cantidad: 0 });
         console.log(promedios);
         document.getElementById('result').value = promedios.ganado / promedios.cantidad;
         document.getElementById('min').value = promedios.minutos / promedios.cantidad;
         document.getElementById('prom').value = promedios.ganado / promedios.minutos;
-        if ((promedios.ganado / promedios.minutos) < 0.4) {
+        if (
+          (promedios.minutos / promedios.cantidad) > 12 ||
+          (promedios.ganado / promedios.minutos) < 1 ||
+          (promedios.ganado / promedios.invertido) < 0.4
+        ) {
           alert('revisar');
         }
       }
