@@ -10,7 +10,8 @@
 
   <body>
     <h1>Simulación Binaria</h1>
-    <br>Porcentaje<input type="number" id="porcentaje">
+    <br>Porcentaje<input type="number" id="porcentaje" value="0.9">
+    <br>Presupuesto<input type="number" id="presupuesto" value="100">
     <button onclick="simulate()">Simular</button>
 
 
@@ -19,35 +20,71 @@
     <br>total minutos promedio<input type="text" id="min">
     <br>promedio ganancia por minuto<input type="text" id="prom">
     <script>
+      const customVars = {
+        presupuesto_inicial: 100,
+        porcentaje_inicial: 0.9
+      };
+
+      customVars.presupuesto = customVars.presupuesto_inicial;
+      customVars.procentaje = customVars.procentaje_inicial;
+
+      const loadGlobalVars = () => {
+
+        const presupuesto = document.getElementById('presupuesto');
+        customVars.presupuesto = presupuesto ? parseFloat(presupuesto.value) : customVars.presupuesto_inicial;
+
+        const porcentaje = document.getElementById('porcentaje');
+        customVars.porcentaje = porcentaje ? parseFloat(porcentaje.value) : customVars.porcentaje_inicial;
+      };
+
+
       const sim = () => {
+
         const gana = () => {
           i--;
           log(['GANA']);
-          invertir = Math.floor(invertido_ciclo / porcentaje);
+          invertir = Math.floor(invertido_ciclo / customVars.porcentaje);
           invertido = invertir + 1;
           invertido_ciclo += invertido;
           total_invertido += invertido;
-          total_ganado += (invertido * porcentaje);
+          total_ganado += (invertido * customVars.porcentaje);
           ganamos = true;
+          customVars.presupuesto += total_ganado;
           log();
           invertido = 1;
           invertido_ciclo = 0;
 
         };
-        const pierde = () => {
-          log(['pierde']);
-          invertir = Math.floor(invertido_ciclo / porcentaje);
+
+        const calcularVariablesEnPerdida = () => {
+
+          customVars.presupuesto -= invertido_ciclo;
+          invertir = Math.floor(invertido_ciclo / customVars.porcentaje);
           invertido = invertir + 1;
           invertido_ciclo += invertido;
+
           total_invertido += invertido;
           ganamos = false;
+
+        };
+
+        const pierde = () => {
+          log(['pierde']);
+          calcularVariablesEnPerdida();
           log();
+
+          if (invertido_ciclo > (customVars.presupuesto / 3)) {
+            // alert('se ha superado el presupuesto!');
+            console.log(['Presupuesto superado'], { invertido_ciclo, presupuesto: customVars.presupuesto });
+            invertido_ciclo = 0;
+            calcularVariablesEnPerdida();
+          }
         };
 
         const log = (arr = null) => {
-          if (arr) {/*
+          if (arr) {
             document.write(arr.join('<br>'));
-            document.write('<br>');*/
+            document.write('<br>');
             return;
           }
           const result = [];
@@ -60,12 +97,16 @@
           const detalle = [
             'invertido real: ' + Math.round(invertido * 10) / 10,
             ganamos ?
-              'resultado esperado: ' + (invertido * (1 + porcentaje)) :
+              'resultado esperado: ' + (invertido * (1 + customVars.porcentaje)) :
               'perdido: ' + Math.round(invertido_ciclo * 10) / 10
           ];
           result.push(detalle.join(' | '));
           if (ganamos)
-            result.push('ganancia neta: ' + Math.round(((invertido * (1 + porcentaje)) - invertido) * 10) / 10);
+            result.push('ganancia neta: ' + Math.round(((invertido * (1 + customVars.porcentaje)) - invertido) * 10) / 10);
+          else
+            if (invertido_ciclo > customVars.presupuesto) {
+              alert('se ha superado el presupuesto!');
+            }
           log(result);
           var detalle1 = JSON.stringify(detalle.map(det => det.split(': ')));
           console.log(detalle1);
@@ -74,7 +115,6 @@
           return totales;
         }
 
-        var porcentaje = parseFloat(document.getElementById('porcentaje').value);
         // var porcentaje = 0.8;
         var aleatorio = 0, i = 5, baja = false;
         var invertido = 1, invertir = 0;
@@ -82,7 +122,7 @@
         var iteraciones = 0;
         var ganamos = true;
 
-        while (i > 0 && iteraciones < 20) {
+        while (i > 0 && customVars.presupuesto > 1/*(presupuesto_inicial / 4)*//*iteraciones < 20*/) {
           iteraciones++;
           baja = !baja;
           aleatorio = Math.random();
@@ -104,12 +144,17 @@
         }
         log(['<br><br>iteraciones simuladas', iteraciones]);
         const results = log();
+        // console.log(['presupuesto', presupuesto, results[0].split(': ')[1]]);
+
         return results.map(result => result.split(': '))
       }
 
       const simulate = () => {
 
+        loadGlobalVars();
+
         console.clear();
+
         var simulations = 20;
         var data = [];
         var dataSim = null;
@@ -126,7 +171,7 @@
           }, {});
 
           data.push(dataSim);
-          console.log(dataSim);
+          console.log(dataSim, { presupuesto: customVars.presupuesto });
         }
         var promedios = data.reduce((acc, total, i) => {
           acc.ganado += total[total.arr[0]];
@@ -135,14 +180,15 @@
           acc.cantidad++;
           return acc;
         }, { ganado: 0, invertido: 0, minutos: 0, cantidad: 0 });
-        console.log(promedios);
+        console.log(promedios);/*
         document.getElementById('result').value = promedios.ganado / promedios.cantidad;
         document.getElementById('min').value = promedios.minutos / promedios.cantidad;
-        document.getElementById('prom').value = promedios.ganado / promedios.minutos;
-        if (
+        document.getElementById('prom').value = promedios.ganado / promedios.minutos;*/
+        if (/*
           (promedios.minutos / promedios.cantidad) > 12 ||
           (promedios.ganado / promedios.minutos) < 1 ||
-          (promedios.ganado / promedios.invertido) < 0.4
+          (promedios.ganado / promedios.invertido) < 0.4 ||*/
+          customVars.presupuesto < customVars.presupuesto_inicial
         ) {
           alert('revisar');
         }
