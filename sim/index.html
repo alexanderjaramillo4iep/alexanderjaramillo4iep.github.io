@@ -22,7 +22,8 @@
     <script>
       const customVars = {
         presupuesto_inicial: 100,
-        porcentaje_inicial: 0.9
+        porcentaje_inicial: 0.9,
+        inversion_inicial: 1
       };
 
       customVars.presupuesto = customVars.presupuesto_inicial;
@@ -43,50 +44,36 @@
         const gana = () => {
           i--;
           log(['GANA']);
-          invertir = Math.floor(invertido_ciclo / customVars.porcentaje);
-          invertido = invertir + 1;
-          invertido_ciclo += invertido;
-          total_invertido += invertido;
-          total_ganado += (invertido * customVars.porcentaje);
+
+          let ganado = invertido + (invertido * customVars.porcentaje);
+          // ganado = Math.round(ganado * 10) / 10;
+          customVars.presupuesto = Math.round((customVars.presupuesto + ganado) * 10) / 10;
+          total_ganado += ganado;
+
           ganamos = true;
-          customVars.presupuesto += total_ganado;
+
           log();
-          invertido = 1;
           invertido_ciclo = 0;
-
-        };
-
-        const calcularVariablesEnPerdida = () => {
-
-          customVars.presupuesto -= invertido_ciclo;
-          invertir = Math.floor(invertido_ciclo / customVars.porcentaje);
-          invertido = invertir + 1;
-          invertido_ciclo += invertido;
-
-          total_invertido += invertido;
-          ganamos = false;
 
         };
 
         const pierde = () => {
           log(['pierde']);
-          calcularVariablesEnPerdida();
+          ganamos = false;
           log();
-
-          if (invertido_ciclo > (customVars.presupuesto / 3)) {
-            // alert('se ha superado el presupuesto!');
-            console.log(['Presupuesto superado'], { invertido_ciclo, presupuesto: customVars.presupuesto });
-            invertido_ciclo = 0;
-            calcularVariablesEnPerdida();
-          }
         };
 
         const log = (arr = null) => {
-          if (arr) {
+          if (arr) {/*
             document.write(arr.join('<br>'));
-            document.write('<br>');
+            document.write('<br>');*/
             return;
           }
+          logTotals(false);
+        }
+
+        const logTotals = (returnVal = true) => {
+
           const result = [];
           const totales = [
             'total ganado: ' + Math.round(total_ganado * 10) / 10,
@@ -102,21 +89,21 @@
           ];
           result.push(detalle.join(' | '));
           if (ganamos)
-            result.push('ganancia neta: ' + Math.round(((invertido * (1 + customVars.porcentaje)) - invertido) * 10) / 10);
+            result.push('ganancia neta: ' + Math.round(((invertido * (1 + customVars.porcentaje)) - invertido_ciclo) * 10) / 10);
           else
             if (invertido_ciclo > customVars.presupuesto) {
               alert('se ha superado el presupuesto!');
             }
           log(result);
           var detalle1 = JSON.stringify(detalle.map(det => det.split(': ')));
-          console.log(detalle1);
 
           // totales.push('detalle: ' + detalle1);
-          return totales;
+          if (returnVal) return totales;
+          console.log(detalle1);
         }
 
         // var porcentaje = 0.8;
-        var aleatorio = 0, i = 5, baja = false;
+        var aleatorio = 0, i = 20, baja = false;
         var invertido = 1, invertir = 0;
         var [total_ganado, total_invertido, invertido_ciclo] = [0, 0, 0];
         var iteraciones = 0;
@@ -124,27 +111,38 @@
 
         while (i > 0 && customVars.presupuesto > 1/*(presupuesto_inicial / 4)*//*iteraciones < 20*/) {
           iteraciones++;
-          baja = !baja;
+          // baja = !baja;
+
+          if (invertido_ciclo > (customVars.presupuesto / 20)) {
+            // alert('se ha superado el presupuesto!');
+            console.log(['Presupuesto superado'], { invertido_ciclo, presupuesto: customVars.presupuesto });
+            invertido_ciclo = 0;
+          }
+
           aleatorio = Math.random();
 
+          invertir = Math.floor(invertido_ciclo / customVars.porcentaje);
+          invertido = invertir + 1;
+          customVars.presupuesto -= invertido;
+          invertido_ciclo += invertido;
+          total_invertido += invertido;
 
           if (aleatorio < 0.5) {
+
+            log(['<br>baja, ']);
+            if (baja) gana();
+            else pierde();
+
+          } else {
 
             log(['<br>sube, ']);
             if (baja) pierde();
             else gana();
 
-          } else {
-
-            log(['<br>baja, ']);
-            if (!baja) pierde();
-            else gana();
-
           }
         }
         log(['<br><br>iteraciones simuladas', iteraciones]);
-        const results = log();
-        // console.log(['presupuesto', presupuesto, results[0].split(': ')[1]]);
+        const results = logTotals();
 
         return results.map(result => result.split(': '))
       }
@@ -160,6 +158,7 @@
         var dataSim = null;
         while (simulations > 0) {
           simulations--;
+          customVars.presupuesto_inicial = customVars.presupuesto;
 
           dataSim = sim().reduce((acc, dato, i) => {
             acc[dato[0]] = parseFloat(dato[1]);
@@ -170,8 +169,13 @@
             return acc;
           }, {});
 
+          dataSim['presupuesto_inicial'] = customVars.presupuesto_inicial;
+          dataSim['presupuesto'] = customVars.presupuesto;
           data.push(dataSim);
-          console.log(dataSim, { presupuesto: customVars.presupuesto });
+          console.log(dataSim, {
+            inicial: customVars.presupuesto_inicial,
+            final: customVars.presupuesto
+          });
         }
         var promedios = data.reduce((acc, total, i) => {
           acc.ganado += total[total.arr[0]];
