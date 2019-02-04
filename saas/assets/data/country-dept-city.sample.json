@@ -1,0 +1,21 @@
+{
+  "arr": [
+    "Colombia"
+  ],
+  "Colombia": {
+    "arr": [
+      "Antioquia",
+      "Valle"
+    ],
+    "Antioquia": {
+      "arr": [
+        "Medellín"
+      ]
+    },
+    "Valle": {
+      "arr": [
+        "Cali"
+      ]
+    }
+  }
+}
