@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Alexander Jaramillo web site</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="general-container">
+                <img src="img/logo.png" id="main-logo">
+                <nav class="nav-menu">
+                    <ul class="menu">
+                        <a href="#home" onclick="cerrarMenu()"><li>Inicio</li></a>
+                        <a href="#services" onclick="cerrarMenu()"><li>Servicios</li></a>
+                        <a href="#gallery" onclick="cerrarMenu()"><li>Galería</li></a>
+                        <a href="#contact" onclick="cerrarMenu()"><li>Contacto</li></a>
+                    </ul>
+                    <button class="menu-btn" id="menuHeaderBtn" onclick="cerrarMenu()">
+                            <i class="fas fa-times my-icon"></i>
+                        </button>
+                </nav>
+                <button class="menu-btn" id="menuHeaderBtn" onclick="abrirMenu()">
+                    <i class="fas fa-bars my-icon"></i>
+                </button>
+            </div>
+        </div>
+        <div class="banner" id="home" style="background: url('img/banner.jpg'); background-size: cover; background-position: center;"></div>
+        
+    </header>
+
+    <section class="general-section" id="services">
+        <div class="general-container">
+            <h2 class="general-title">Servicios</h2>
+            <hr class="line-title">
+            <div class="contenedor-services">
+                <div class="servicio">
+                    <div class="imagen-servicio" style="background: url('img/homero.jpg'); background-size: cover; background-position: top;" >
+                    </div>
+                    <h2 class="subtitulo-services">Servicio 1</h2>
+                    <p class="parrafo-regular text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                    <button class="boton-regular boton-centrado">Adquirir servicio</button>
+                </div>
+                <div class="servicio">
+                        <div class="imagen-servicio" style="background: url('img/bart.jpg'); background-size: cover; background-position-y: 13%;">
+                        </div>
+                        <h2 class="subtitulo-services">Servicio 1</h2>
+                        <p class="parrafo-regular text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                        <button class="boton-regular boton-centrado">Adquirir servicio</button>
+                    </div>
+                    <div class="servicio">
+                            <div class="imagen-servicio" style="background: url('img/milhouse.png'); background-size: cover; background-position-y: 27%;">
+                            </div>
+                            <h2 class="subtitulo-services">Servicio 1</h2>
+                            <p class="parrafo-regular text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                            <button class="boton-regular boton-centrado">Adquirir servicio</button>
+                        </div>
+            </div>
+        </div>
+    </section>
+    <section class="general-section seccion-negra" id="gallery">
+        <div class="general-container">
+                <h2 class="general-title text-blanco">Galería</h2>
+                <hr class="line-title">
+                <div class="contenedor-services">
+                    <div class="imagen-gallery" style="background: url('img/milhouse.png'); background-size: cover; background-position-y: 27%;">
+                        <img src="img/box.png" class="w100">
+                    </div>
+                    <div class="imagen-gallery" style="background: url('img/homero.jpg'); background-size: cover; background-position-y: 27%;">
+                        <img src="img/box.png" class="w100">
+                    </div>
+                    <div class="imagen-gallery" style="background: url('img/bart.jpg'); background-size: cover; background-position-y: 27%;">
+                        <img src="img/box.png" class="w100">
+                    </div>
+                    <div class="imagen-gallery" style="background: url('img/milhouse.png'); background-size: cover; background-position-y: 27%;">
+                        <img src="img/box.png" class="w100">
+                    </div>
+                    <div class="imagen-gallery" style="background: url('img/homero.jpg'); background-size: cover; background-position-y: 27%;">
+                        <img src="img/box.png" class="w100">
+                    </div>
+                    <div class="imagen-gallery" style="background: url('img/bart.jpg'); background-size: cover; background-position-y: 27%;">
+                        <img src="img/box.png" class="w100">
+                    </div>
+                    <div class="imagen-gallery" style="background: url('img/milhouse.png'); background-size: cover; background-position-y: 27%;">
+                        <img src="img/box.png" class="w100">
+                    </div>
+                    <div class="imagen-gallery" style="background: url('img/homero.jpg'); background-size: cover; background-position-y: 27%;">
+                        <img src="img/box.png" class="w100">
+                    </div>
+                    <div class="imagen-gallery" style="background: url('img/bart.jpg'); background-size: cover; background-position-y: 27%;">
+                        <img src="img/box.png" class="w100">
+                    </div>
+                    <div class="imagen-gallery" style="background: url('img/milhouse.png'); background-size: cover; background-position-y: 27%;">
+                        <img src="img/box.png" class="w100">
+                    </div>
+                </div>
+        </div>
+    </section>
+    <section class="general-section" id="contact">
+        <div class="general-container">
+                <h2 class="general-title">Contacto</h2>
+                <hr class="line-title">
+
+                <div class="contenedor-services">
+                    <div class="columna-2">
+                        <form>
+                            <label class="label-regular">Nombre</label>
+                            <input class="input-regular"type="text" placeholder="Escribe tu nombre aquí">
+                            
+                            <label class="label-regular">Teléfono</label>
+                            <input class="input-regular" type="number" placeholder="Escribe tu número">
+                            
+                            <label class="label-regular">Asunto</label>
+                            <input class="input-regular" type="text" placeholder="Escribe el asunto">
+                            <button class="boton-regular">Adquirir servicio</button>
+                        </form>
+                    </div>
+                    <div class="columna-2">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1983.3637678657553!2d-75.61613722824659!3d6.16722924161877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTAnMDIuMCJOIDc1wrAzNic1NC44Ilc!5e0!3m2!1ses-419!2sco!4v1582996183364!5m2!1ses-419!2sco" class="mapa" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <footer class="seccion-footer seccion-negra">
+        <p class="parrafo-regular text-center text-blanco separar-texto">Hecho con amor por Daniel Vargas</p>
+    </footer>
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

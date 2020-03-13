@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Instagram sample</title>
+</head>
+<body>
+    <div>
+        <a href="https://api.instagram.com/oauth/authorize/?client_id=d183642bd0dc4e9fb9f40d2aece6d7fa&redirect_uri=https://alexanderjaramillo4iep.github.io/index3.html&response_type=code">prueba instagram server side</a>
+    </div>
+    <div>
+        <a href="https://api.instagram.com/oauth/authorize/?client_id=d183642bd0dc4e9fb9f40d2aece6d7fa&redirect_uri=http://port-3800.holaa-alexanderjaramillo4iep817149.codeanyapp.com/api/post&response_type=token">prueba instagram client side</a>
+    </div>
+    post to <div>https://api.instagram.com/oauth/access_token</div>
+    <div>
+        <form action="https://api.instagram.com/oauth/access_token" method="post">
+            <div><span>client_id</span><input type="text" name="client_id" value=""/>=d183642bd0dc4e9fb9f40d2aece6d7fa</div>
+            <div><span>client_secret</span><input type="text" name="client_secret" value=""/>=18f7ba090ad64c38942d7186f00939dc</div>
+            <div><span>grant_type</span><input type="text" name="grant_type" value=""/>=authorization_code</div>
+            <div><span>redirect_uri</span><input type="text" name="redirect_uri" value="http://port-3800.holaa-alexanderjaramillo4iep817149.codeanyapp.com/api/post"/>=https://alexanderjaramillo4iep.github.io/index3.html</div>
+            <div><span>code</span><input type="text" name="code" id="code" value=""/>=4c3336f20a174392b719cc461a3dcb7b</div>
+            <button type="submit">enviar</button>
+        </form>
+    </div>
+    post any http://port-3800.holaa-alexanderjaramillo4iep817149.codeanyapp.com/api/post
+</body>
+</html>
