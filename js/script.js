@@ -62,7 +62,7 @@ function translateFn(category, text) {
 
 var allData = {};
 
-fetch(`http://calapi.inadiutorium.cz/api/v0/en/calendars/general-la/${year}`)
+fetch(`//calapi.inadiutorium.cz/api/v0/en/calendars/general-la/${year}`)
   .then((response) => {
     // console.log({response});
     return response.json();
@@ -77,7 +77,7 @@ fetch(`http://calapi.inadiutorium.cz/api/v0/en/calendars/general-la/${year}`)
   });
 
 
-fetch(`http://calapi.inadiutorium.cz/api/v0/en/calendars/general-la/${year}/${month}`)
+fetch(`//calapi.inadiutorium.cz/api/v0/en/calendars/general-la/${year}/${month}`)
   .then((response) => {
     // console.log({response});
     return response.json();
