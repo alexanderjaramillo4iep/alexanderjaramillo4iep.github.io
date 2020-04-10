@@ -1,5 +1,7 @@
 $("#info").html("Cargando tiempo litúrgico");
 
+const detailElm = $("#detail");
+
 var aDate = new Date();
 
 var year = aDate.getFullYear();
@@ -35,7 +37,6 @@ var translate = {
     'christmastide': 'navidad',
     'epiphanytide': 'epifanía',
     'ordinary': 'ordinario',
-    // 'pre-lent / shrovetide': 'pre-lent / shrovetide',
     'lent': 'cuaresma',
     'holy week': 'semana santa',
     'paschal triduum': 'triduo pascual',
@@ -98,24 +99,9 @@ fetch(`//calapi.inadiutorium.cz/api/v0/en/calendars/general-la/${year}/${month}`
     console.log({allData});
     const aDay = aDate.getDate();
     const selDay = allData[year][(month <= 9 ? '0': '') + month][(aDay <= 9 ? '0': '') + aDay]
-    const detailElm = $("#detail");
-    detailElm.html(`${translateFn('daysOfWeek', selDay.weekday)} ${aDay}, Semana ${selDay.season_week} de ${translateFn('seasons', selDay.season)}`);
-    // detailElm.html(`${detailElm.html()}`);
+    detailElm.html(
+      `${translateFn('daysOfWeek', selDay.weekday)} ${aDay}, Semana ${selDay.season_week} de ${translateFn('seasons', selDay.season)}`);
   })
   .catch((error) => {
     console.log('There has been a problem with your fetch operation:', error);
   });
-/* 
-$.ajax({
-  url: `http://calapi.inadiutorium.cz/api/v0/en/calendars/general-la/${year}/${month}`,
-  // crossdomain: true,
-  // headers: { 'Access-Control-Allow-Origin': '*' },
-  method: "GET",
-  timeout: 0
-}).done(function(response) {
-  console.log({response});
-  
-  // const {lectionary, ferial_lectionary} = response;
-  // $("#detail").html(`Ciclo ${lectionary}`);
-});
- */
