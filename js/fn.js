@@ -1,3 +1,4 @@
+
 const fn = {
   translate: (category, text) => {
     category = category.toLowerCase();
@@ -13,5 +14,23 @@ const fn = {
     }
   
     return translate[category][text];
+  },
+  createElm: obj => {
+    obj = {
+      tag: 'span',
+      attributes: {innerHTML: 'prueba'},
+      ...obj
+    };
+    const elm = document.createElement(obj.tag);
+    for (const attr in obj.attributes) {
+      if (obj.attributes.hasOwnProperty(attr)) {
+        const val = obj.attributes[attr];
+        elm[attr] = val;
+      }
+    }
+
+    return elm;
   }
 };
+
+window.fn = fn;

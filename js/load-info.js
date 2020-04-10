@@ -1,7 +1,6 @@
 const infoElm = document.getElementById('info');
 infoElm.innerHTML = "Cargando tiempo litúrgico";
 
-const detailElm = document.getElementById('detail');
 
 let aDate = new Date();
 
@@ -71,13 +70,27 @@ new Promise((resolve, reject) => {
   
   const aDay = aDate.getDate();
   const selDay = allData[year][(month <= 9 ? '0': '') + month][(aDay <= 9 ? '0': '') + aDay];
+  
+  const detailElm = document.getElementById('detail');
+  console.log("detailElm", detailElm)
 
-  detailElm.innerHTML = 
-    `${fn.translate('daysOfWeek', selDay.weekday)} ${aDay},
-    Semana ${selDay.season_week} de ${fn.translate('seasons', selDay.season)}`;
-  selDay.celebrations.sort((c1, c2) => c1.rank_num - c2.rank_num).forEach(c => {
-    detailElm.innerHTML += `<br/>(${c.rank}) ${c.title} <i class="fas fa-flag color-${c.colour}"></i>`;
-  });
+  const header = fn.createElm({
+    tag: 'div',
+    attributes: {
+      innerHTML: `${fn.translate('daysOfWeek', selDay.weekday)} ${aDay},
+      Semana ${selDay.season_week} de ${fn.translate('seasons', selDay.season)}`
+    }
+  })
+
+  const stackDetail = selDay.celebrations.sort((c1, c2) => c1.rank_num - c2.rank_num).reduce((result, c) => {
+    return [...result, fn.createElm({
+      tag: 'div',
+      attributes: {
+        innerHTML: `<i class="fas fa-flag color-${c.colour}"></i> (${c.rank}) ${c.title} `
+      }
+    })];
+  }, []);
+  [header, ...stackDetail].forEach(elm => detailElm.appendChild(elm));
 })
 .catch((error) => {
   console.log('There has been a problem with your fetch operation:', error);
