@@ -7,10 +7,7 @@
     <title>Alexander Jaramillo web site</title>
 
     <link rel="stylesheet" href="css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap"
-      rel="stylesheet"
-    />
+
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -44,17 +41,20 @@
     </section>
 
     <footer class="footer-class section">
-      <p class="regular-p text-class center spacing-1">
-        Made by Alexander Jaramillo
+      <p class="font-2 regular-p text-class center spacing-1">
+        Creado por Alexander Jaramillo
       </p>
     </footer>
 
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.js"
-      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-      crossorigin="anonymous"
-    ></script>
-
-    <script src="js/script.js"></script>
+    <script>
+      const version = 'v0.1.2';
+      const tag_hdr = document.getElementsByTagName('head')[0];
+    
+      let tag_script = document.createElement('script');
+      tag_script.setAttribute('type', 'text/javascript');
+      tag_script.setAttribute('src', `js/script.js?version=${version}`);
+      tag_hdr.appendChild(tag_script);
+    </script>
+    
   </body>
 </html>
