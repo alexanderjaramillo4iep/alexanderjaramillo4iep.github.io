@@ -4,5 +4,11 @@
             "name": "feature/more-info-n-style",
             "base": "develop"
         }
+    ],
+    "gitflow4code.releases": [
+        {
+            "name": "release/react-project-style",
+            "base": "develop"
+        }
     ]
 }
