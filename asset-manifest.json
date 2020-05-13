@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.baa53473.chunk.css",
+    "main.js": "/static/js/main.12752688.chunk.js",
+    "main.js.map": "/static/js/main.12752688.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e2ab80d1.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e2ab80d1.js.map",
+    "static/js/2.8ec57da6.chunk.js": "/static/js/2.8ec57da6.chunk.js",
+    "static/js/2.8ec57da6.chunk.js.map": "/static/js/2.8ec57da6.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.5b5540e5510264282149b5f2c863c022.js": "/precache-manifest.5b5540e5510264282149b5f2c863c022.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.baa53473.chunk.css.map": "/static/css/main.baa53473.chunk.css.map",
+    "static/js/2.8ec57da6.chunk.js.LICENSE.txt": "/static/js/2.8ec57da6.chunk.js.LICENSE.txt",
+    "static/media/lorem-ipsum.txt": "/static/media/lorem-ipsum.db89bb5c.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e2ab80d1.js",
+    "static/js/2.8ec57da6.chunk.js",
+    "static/css/main.baa53473.chunk.css",
+    "static/js/main.12752688.chunk.js"
+  ]
+}

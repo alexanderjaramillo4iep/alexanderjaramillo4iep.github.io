@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Alexander Jaramillo web site</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="top-bar">
+        <div class="general container">
+          <i class="fas fa-church" id="main-logo"></i>
+          <nav class="nav-menu">
+            <ul class="menu">
+              <a href="#home"><li>Inicio</li></a>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="general section" id="home">
+      <div class="general container">
+        <h2 class="general title">Calendario</h2>
+        <hr class="line title" />
+        <div class="calendar container">
+          <div id="info" class="text-class center"></div>
+          <div id="detail"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-class section">
+      <p class="font-2 regular-p text-class center spacing-1">
+        Creado por Alexander Jaramillo
+      </p>
+    </footer>
+
+    <script>
+      const version = 'v0.1.2';
+      const tag_hdr = document.getElementsByTagName('head')[0];
+    
+      let tag_script = document.createElement('script');
+      tag_script.setAttribute('type', 'text/javascript');
+      tag_script.setAttribute('src', `js/script.js?version=${version}`);
+      tag_hdr.appendChild(tag_script);
+    </script>
+    
+  </body>
+</html>

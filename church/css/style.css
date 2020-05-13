@@ -1,3 +1,8 @@
+/* imports */
+
+@import url('../../fonts/import.css');
+
+
 /* variables */
 
 :root {
@@ -7,6 +12,10 @@
   --main-color1: #142b55;
   --main-color2: #2e4372;
   --main-color3: #4e638e;
+
+  --font-main: "Odibee Sans";
+  --font-1: 'Courgette', cursive;
+  --font-2: 'Marck Script', cursive;
 }
 /* var(--main-color); */
 
@@ -15,17 +24,27 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Odibee Sans";
+  font-family: var(--font-main);
   box-sizing: border-box;
 }
 
 html {
   color: var(--main-color);
+  /* font-size: 2.5vw; */
+  font-size: 18px;
 }
 
 a {
   list-style: none;
   display: inline-block;
+}
+
+.font-1 {
+  font-family: var(--font-1);
+}
+
+.font-2 {
+  font-family: var(--font-2);
 }
 
 /* reusable classes */
@@ -48,12 +67,29 @@ a {
 .general.section {
   width: 100%;
   height: auto;
+  min-height: calc(100vh - 100px);
   display: inline-block;
   padding: 100px 29px;
 }
 
 .regular-p {
   font-size: 18px;
+}
+
+.color-green {
+  color: green;
+}
+
+.color-red {
+  color: red;
+}
+
+.color-violet {
+  color: violet;
+}
+
+.color-white {
+  color: white;
 }
 
 /* specific styles */
@@ -67,7 +103,7 @@ a {
 
 h2.general.title {
   text-align: center;
-  font-size: 35px;
+  font-size: 2rem;
   letter-spacing: 1px;
 }
 
